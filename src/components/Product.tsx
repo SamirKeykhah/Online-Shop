@@ -23,7 +23,7 @@ const Product = ({
   const itemInCart = inCart ? ' → Item in Cart: ✔️' : null;
 
   const content = (
-    <div className="flex flex-col w-full rounded-lg shadow-md lg:max-w-sm m-5 hover:shadow-xl border py-2">
+    <div className=" col-span-12 sm:col-span-6 lg:col-span-4 2xl:col-span-3 3xl:col-span-2 flex flex-col w-full rounded-lg shadow-md   hover:shadow-xl border py-2">
       <img src={img} alt={product.name} className="mx-auto h-48" />
 
       <div className="grow flex flex-col p-4 ">
