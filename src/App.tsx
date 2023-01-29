@@ -1,7 +1,17 @@
-import React from 'react';
+import Header from './components/Header';
+import { useState } from 'react';
 
 function App() {
-  return <div className="App">my react app</div>;
+  const [viewCart, setViewCart] = useState<boolean>(false);
+
+  const content = (
+    <>
+      <Header viewCart={viewCart} setViewCart={setViewCart} />
+      {viewCart ? <div>Cart</div> : <div>Product List </div>}
+    </>
+  );
+
+  return content;
 }
 
 export default App;
