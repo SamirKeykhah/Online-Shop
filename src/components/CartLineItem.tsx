@@ -18,7 +18,20 @@ const CartLineItem = ({
   backgroundColor,
   itemNumber,
 }: PropsType) => {
+  //const img: string = item.image;
+
+  //const title: string = item.title;
+
+  //const description: string = item.description;
+
   const lineTotal: number = item.qty * item.price;
+
+  const onChangeQty = (value: number) => {
+    dispatch({
+      type: REDUCER_ACTIONS.QUANTITY,
+      payload: { ...item, qty: value },
+    });
+  };
 
   const onRemoveFromCart = () =>
     dispatch({
@@ -48,7 +61,31 @@ const CartLineItem = ({
         }).format(item.price)}
       </td>
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-        <label htmlFor="itemQty">{item.qty}</label>
+        <label htmlFor="itemQty" className="offscreen">
+          Item Quantity
+        </label>
+        <button
+          className="bg-red-500 hover:bg-red-700 text-white text-center rounded-full h-5 w-5 mr-2 inline-flex items-center justify-center "
+          disabled={item.qty === 1}
+          onClick={() => {
+            if (item.qty !== 1) {
+              onChangeQty(item.qty - 1);
+            }
+          }}
+        >
+          {' '}
+          -{' '}
+        </button>
+        <span>{item.qty}</span>
+        <button
+          className="bg-green-500 hover:bg-green-700 text-white text-center rounded-full h-5 w-5 ml-2 inline-flex items-center justify-center "
+          onClick={() => {
+            onChangeQty(item.qty + 1);
+          }}
+        >
+          {' '}
+          +{' '}
+        </button>
       </td>
 
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
