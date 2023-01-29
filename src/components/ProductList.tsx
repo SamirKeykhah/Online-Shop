@@ -66,8 +66,7 @@ const ProductList = () => {
           }}
         />
       </div>
-
-      {pageContent}
+      <div className="grid grid-cols-12  gap-4">{pageContent}</div>
     </main>
   );
 
