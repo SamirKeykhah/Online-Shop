@@ -32,7 +32,7 @@ const Product = ({
         </h4>
         <p className="grow mb-2 leading-normal">{product.description}</p>
         <div className="flex items-center justify-between">
-          <p className="font-bold text-gray-900 dark:text-white">
+          <p className="font-bold text-gray-900">
             {new Intl.NumberFormat('en-US', {
               style: 'currency',
               currency: 'USD',
