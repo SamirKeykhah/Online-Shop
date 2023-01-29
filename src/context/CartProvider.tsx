@@ -1,4 +1,4 @@
-import { useMemo, useReducer, createContext, ReactElement } from 'react';
+import { useReducer, createContext, ReactElement } from 'react';
 
 export type CartItemType = {
   //sku: string;
@@ -15,14 +15,14 @@ type CartStateType = { cart: CartItemType[] };
 
 const initCartState: CartStateType = { cart: [] };
 
-const REDUCER_ACTION_TYPE = {
+const REDUCER_ACTIONS = {
   ADD: 'ADD',
   REMOVE: 'REMOVE',
   QUANTITY: 'QUANTITY',
   SUBMIT: 'SUBMIT',
 };
 
-export type ReducerActionType = typeof REDUCER_ACTION_TYPE;
+export type ReducerActionType = typeof REDUCER_ACTIONS;
 
 export type ReducerAction = {
   type: string;
@@ -34,7 +34,7 @@ const reducer = (
   action: ReducerAction
 ): CartStateType => {
   switch (action.type) {
-    case REDUCER_ACTION_TYPE.ADD: {
+    case REDUCER_ACTIONS.ADD: {
       if (!action.payload) {
         throw new Error('action.payload missing in ADD action');
       }
@@ -59,7 +59,7 @@ const reducer = (
         ],
       };
     }
-    case REDUCER_ACTION_TYPE.REMOVE: {
+    case REDUCER_ACTIONS.REMOVE: {
       if (!action.payload) {
         throw new Error('action.payload missing in REMOVE action');
       }
@@ -72,7 +72,7 @@ const reducer = (
 
       return { ...state, cart: [...filteredCart] };
     }
-    case REDUCER_ACTION_TYPE.QUANTITY: {
+    case REDUCER_ACTIONS.QUANTITY: {
       if (!action.payload) {
         throw new Error('action.payload missing in QUANTITY action');
       }
@@ -97,7 +97,7 @@ const reducer = (
 
       return { ...state, cart: [...updatedList] };
     }
-    case REDUCER_ACTION_TYPE.SUBMIT: {
+    case REDUCER_ACTIONS.SUBMIT: {
       return { ...state, cart: [] };
     }
 
@@ -108,10 +108,6 @@ const reducer = (
 
 const useCartContext = (initCartState: CartStateType) => {
   const [state, dispatch] = useReducer(reducer, initCartState);
-
-  const REDUCER_ACTIONS = useMemo(() => {
-    return REDUCER_ACTION_TYPE;
-  }, []);
 
   const totalItems = state.cart.reduce((previousValue, cartItem) => {
     return previousValue + cartItem.qty;
@@ -140,7 +136,7 @@ export type UseCartContextType = ReturnType<typeof useCartContext>;
 
 const initCartContextState: UseCartContextType = {
   dispatch: () => null,
-  REDUCER_ACTIONS: REDUCER_ACTION_TYPE,
+  REDUCER_ACTIONS: REDUCER_ACTIONS,
   totalItems: 0,
   totalPrice: '',
   cart: [],

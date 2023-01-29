@@ -1,13 +1,13 @@
 import useCart from '../hooks/useCart';
 
 type PropsType = {
-  viewCart: boolean;
+  isCart: boolean;
 };
 
-const Footer = ({ viewCart }: PropsType) => {
+const Footer = ({ isCart }: PropsType) => {
   const { totalItems, totalPrice } = useCart();
 
-  const pageContent = viewCart ? (
+  const pageContent = isCart ? (
     <p className=" text-gray-400">Online Shop</p>
   ) : (
     <>

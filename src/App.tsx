@@ -1,23 +1,39 @@
-import Header from './components/Header';
-import Footer from './components/Footer';
 import ProductList from './components/ProductList';
-import { useState } from 'react';
 import Cart from './components/Cart';
+import { Layout } from './components/Layout';
+import { Routes } from 'react-router-dom';
+import { Route } from 'react-router';
 
 function App() {
-  const [viewCart, setViewCart] = useState<boolean>(false);
+  return (
+    <Routes>
+      <Route
+        index
+        element={
+          <Layout isCart={false}>
+            <ProductList />
+          </Layout>
+        }
+      />
+      <Route
+        path="cart"
+        element={
+          <Layout isCart={true}>
+            <Cart />
+          </Layout>
+        }
+      />
 
-  const pageContent = viewCart ? <Cart /> : <ProductList />;
-
-  const content = (
-    <>
-      <Header viewCart={viewCart} setViewCart={setViewCart} />
-      {pageContent}
-      <Footer viewCart={viewCart} />
-    </>
+      <Route
+        path="*"
+        element={
+          <Layout isCart={false}>
+            <div>Nothing here</div>
+          </Layout>
+        }
+      />
+    </Routes>
   );
-
-  return content;
 }
 
 export default App;
