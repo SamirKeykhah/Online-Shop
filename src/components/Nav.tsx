@@ -1,9 +1,12 @@
+import useCart from '../hooks/useCart';
+
 type PropsType = {
   viewCart: boolean;
   setViewCart: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Nav = ({ viewCart, setViewCart }: PropsType) => {
+  const { totalItems } = useCart();
   const button = viewCart ? (
     <button
       className="px-4 py-2 m-2 text-sm text-white bg-blue-500 rounded shadow"
@@ -18,7 +21,7 @@ const Nav = ({ viewCart, setViewCart }: PropsType) => {
     >
       Cart{' '}
       <div className="bg-red-500 w-5 h-5 rounded-full text-white flex items-center justify-center">
-        0
+        {totalItems}
       </div>
     </button>
   );
