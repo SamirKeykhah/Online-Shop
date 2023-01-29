@@ -1,29 +1,28 @@
 import useCart from '../hooks/useCart';
-
+import { Link } from 'react-router-dom';
 type PropsType = {
-  viewCart: boolean;
-  setViewCart: React.Dispatch<React.SetStateAction<boolean>>;
+  isCart: boolean;
 };
 
-const Nav = ({ viewCart, setViewCart }: PropsType) => {
+const Nav = ({ isCart }: PropsType) => {
   const { totalItems } = useCart();
-  const button = viewCart ? (
-    <button
+  const button = isCart ? (
+    <Link
       className="px-4 py-2 m-2 text-sm text-white bg-blue-500 rounded shadow"
-      onClick={() => setViewCart(false)}
+      to="/"
     >
       View Products
-    </button>
+    </Link>
   ) : (
-    <button
+    <Link
       className="px-4 py-2 m-2 text-sm w-[90px] text-white bg-blue-500 rounded shadow flex flex-row items-center justify-between"
-      onClick={() => setViewCart(true)}
+      to="/cart"
     >
       Cart{' '}
       <div className="bg-red-500 w-5 h-5 rounded-full text-white flex items-center justify-center">
         {totalItems}
       </div>
-    </button>
+    </Link>
   );
 
   const content = <nav className="nav">{button}</nav>;

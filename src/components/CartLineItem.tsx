@@ -18,12 +18,6 @@ const CartLineItem = ({
   backgroundColor,
   itemNumber,
 }: PropsType) => {
-  //const img: string = item.image;
-
-  //const title: string = item.title;
-
-  //const description: string = item.description;
-
   const lineTotal: number = item.qty * item.price;
 
   const onChangeQty = (value: number) => {

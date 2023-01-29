@@ -2,11 +2,10 @@ import Nav from './Nav';
 import { useFetchUser } from '../api/user/getUser';
 
 type PropsType = {
-  viewCart: boolean;
-  setViewCart: React.Dispatch<React.SetStateAction<boolean>>;
+  isCart: boolean;
 };
 
-const Header = ({ viewCart, setViewCart }: PropsType) => {
+const Header = ({ isCart }: PropsType) => {
   const { user } = useFetchUser();
 
   return (
@@ -24,7 +23,7 @@ const Header = ({ viewCart, setViewCart }: PropsType) => {
           <img src="/images/online_shop_logo1.jpg"></img>
         </div>
         <div className="header__price-box">
-          <Nav viewCart={viewCart} setViewCart={setViewCart} />
+          <Nav isCart={isCart} />
         </div>
       </div>
     </header>
