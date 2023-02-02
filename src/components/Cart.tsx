@@ -40,22 +40,23 @@ const Cart = () => {
   ) : (
     <>
       <h2 className="offscreen">Cart</h2>
-
-      <table className="cart">
-        <TableHeader></TableHeader>
-        {cart.map((item, i) => {
-          return (
-            <CartLineItem
-              key={item.id}
-              item={item}
-              itemNumber={i + 1}
-              dispatch={dispatch}
-              REDUCER_ACTIONS={REDUCER_ACTIONS}
-              backgroundColor={i % 2 ? 'white' : 'gray'}
-            />
-          );
-        })}
-      </table>
+      <div className="overflow-x-auto">
+        <table className="cart w-full">
+          <TableHeader></TableHeader>
+          {cart.map((item, i) => {
+            return (
+              <CartLineItem
+                key={item.id}
+                item={item}
+                itemNumber={i + 1}
+                dispatch={dispatch}
+                REDUCER_ACTIONS={REDUCER_ACTIONS}
+                backgroundColor={i % 2 ? 'white' : 'gray'}
+              />
+            );
+          })}
+        </table>
+      </div>
       <div className="cart__totals  text-gray-800 ">
         <p>Total Items: {totalItems}</p>
         <p>Total Price: {totalPrice}</p>
