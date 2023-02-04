@@ -40,7 +40,7 @@ const Cart = () => {
   ) : (
     <>
       <h2 className="offscreen">Cart</h2>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-scroll">
         <table className="cart w-full">
           <TableHeader></TableHeader>
           {cart.map((item, i) => {

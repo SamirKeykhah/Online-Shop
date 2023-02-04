@@ -8,7 +8,7 @@
       "plugin:@typescript-eslint/recommended"
     ],
     "rules": {
-      "no-console": 0,
+      "no-console": 1,
       "no-empty-function": "warn"
       
     }
