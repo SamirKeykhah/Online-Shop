@@ -97,8 +97,6 @@ const CartLineItem = ({
             onClick={onRemoveFromCart}
             className="text-gray-600 transition hover:text-blue-600"
           >
-            <span className="sr-only">Remove item</span>
-
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

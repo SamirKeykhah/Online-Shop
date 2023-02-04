@@ -7,7 +7,7 @@ export const getSingleUser = async ()=>{
       return res.json();
     })
     .catch(() => {
-        console.log("hello")
+        // console.log("hello")
      return null
     });
     return data
